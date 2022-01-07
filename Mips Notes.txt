@@ -51,3 +51,6 @@ MARS handles program exits in two ways:
 Explicitly (by calling syscalls number 10 (exit w/o status) or 17 (exit w/ status)), 
 Or implicitly (by reaching the end of the input assembly's .text section)
 ______________________________
+
+Insturctions:                 Type:
+slt          (set less than)  return Bool     
