@@ -29,3 +29,25 @@ loop:
 end:
 	li $v0,10
 	syscall
+______________________________
+
+.data
+message :.asciiz "bonjour tout le monde.\n TP assembleur.\n"
+.text
+main :
+jal affichermessage  
+li $v0,10		# (end of execution service). Without this line the loop continue for infinity
+syscall
+affichermessage :
+li $v0, 4
+la $a0, message
+syscall
+jr $ra  # On function entry, ra holds the return address where our caller wants us to jump when we're done. (jump register unconditionally)
+
+______________________________
+
+Dropped off bottom means you hit the end of your code.
+MARS handles program exits in two ways: 
+Explicitly (by calling syscalls number 10 (exit w/o status) or 17 (exit w/ status)), 
+Or implicitly (by reaching the end of the input assembly's .text section)
+______________________________
